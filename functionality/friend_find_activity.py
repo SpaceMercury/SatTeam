@@ -18,13 +18,13 @@ df_simple = [row[1:] for row in df.values]  # this has to strip away the first c
 
             # Test Invented profile
 name = "Quandale"
-Ddate = "04/07/2024"    # Dates format MUST be written as DD/MM/YYYY and user should be obligated to do so
-Rdate = '07/07/2024'    
-Dcity = 'Dublin'          # Cities should not be written by users, should be proposed by the page
-Acity = 'Rome'
+Ddate = "17/12/2024"    # Dates format MUST be written as DD/MM/YYYY and user should be obligated to do so
+Rdate = '26/12/2024'    
+Dcity = 'Barcelona'          # Cities should not be written by users, should be proposed by the page
+Acity = 'Lisbon'
 # Activites = [LIST]            # To be done
 
-OverlapIntended = 3      # The customer may decide how many days he wants to coincide with someone
+OverlapIntended = 3      # The customer may decide how minimum days he wants to coincide with someone
 
 
 
@@ -56,14 +56,14 @@ def UserComparer1(UserProfile, DataBase):  # This function is meant to compare U
 # ------------------------------------------------------------------------------------------------------------------------
 # Prototype 2: Coincide at least 3 days in the same city
 
-
+#This function is useful from now on to convert dates
 def parse_date(date_str):       # Date converter to treat the values
     # Parse date string into datetime object
     return datetime.strptime(date_str, '%d/%m/%Y')
 
 
 def UserComparer2(UserProfile, DataBase , OverlapIntended):
-    #OverlapIntended is an integer meant to be the days the customer wants to coincide with the stranger
+    #OverlapIntended is an integer meant to be the days the customer wants to coincide with the stranger at least
 
     CompatibleUsers = []
 
@@ -94,3 +94,47 @@ def UserComparer2(UserProfile, DataBase , OverlapIntended):
 #print(TestList1)
 
 # ------------------------------------------------------------------------------------------------------------------------
+# Prototype 3: Coincide at least 3 days in the same city and fly together // not fly together
+
+def UserComparer3(UserProfile, DataBase , OverlapIntended):
+    #OverlapIntended is an integer meant to be the days the customer wants to coincide with the stranger at least
+
+    CompatibleUsers = []
+
+    # Parse UserProfile dates
+    user_date1 = parse_date(UserProfile[1])   # Get the dates from the Customer 
+    user_date2 = parse_date(UserProfile[2])
+    
+    for user in DataBase:
+        # Parse dates from CompatibleUsers
+        comp_user_date1 = parse_date(user[1])    # Compare with the dates of the others on the database
+        comp_user_date2 = parse_date(user[2])
+        
+        # Check if dates overlap by at least 3 days
+        overlap_days = (min(user_date2, comp_user_date2) - max(user_date1, comp_user_date1)).days + 1
+
+        # These individuals would fly together
+        if overlap_days >= OverlapIntended and np.array_equal(UserProfile[4],user[4]) and np.array_equal(UserProfile[3],user[3]) and np.array_equal(UserProfile[1],user[1]):
+            CompatibleUsers.append(user[0])  # Append the identifier (element 0) of the compatible user
+            if len(CompatibleUsers) != 0:
+                CompatibleUsers.append('')
+
+        # These individuals would not fly together but coincide those days in the city
+        if overlap_days >= OverlapIntended and np.array_equal(UserProfile[4],user[4]): 
+            if len(CompatibleUsers) == 0:
+                CompatibleUsers.append('')
+                CompatibleUsers.append(user[0])
+            else:
+                CompatibleUsers.append(user[0])
+
+
+    if len(CompatibleUsers) != 0:
+        return CompatibleUsers
+    else:
+        return 'No compatible results'
+
+
+# TestList2 = UserComparer3(UserProfileTest, df_simple, OverlapIntended)      #test stuff
+# print(TestList2)
+
+
