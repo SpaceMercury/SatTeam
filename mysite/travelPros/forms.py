@@ -1,7 +1,8 @@
-from django import forms
-from .models import Booking
+from django.forms import ModelForm
+from .models import Traveler
 
-class BookingForm(forms.ModelForm):
+
+class ActivityForm(ModelForm):
     class Meta:
-        model = Booking
+        model = Traveler
         fields = ['name', 'departure_date', 'arrival_date']
