@@ -19,4 +19,12 @@
   Book your dream vacation today and start making memories that will last a
   lifetime!
 </p>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Submit</button>
+</form>
+
+
 {%endblock%}
