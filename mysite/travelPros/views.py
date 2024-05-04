@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import BookingForm
+from .forms import ActivityForm
 from django.http import HttpResponse
 
 # Create your views here.
@@ -7,3 +7,7 @@ from django.http import HttpResponse
 def home(request):
     return render(request, 'home.html')
 
+
+
+def activity(request):
+    return render(request, 'activity.html')
