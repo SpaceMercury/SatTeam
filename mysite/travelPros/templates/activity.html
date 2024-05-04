@@ -1,0 +1,30 @@
+{%extends 'base.html'%} 
+
+{%block title%}Home{%endblock%} {%block content%}
+<h1>Welcome to Travel rr</h1>
+<p>Travel Pr</p>
+<p>
+  Our team of travel experts will help you find the perfect vacation package for
+  your next trip.
+
+
+</p>
+
+
+<p>
+  Whether you're looking for a relaxing beach getaway or an adventurous mountain
+  trek, we've got you covered.
+</p>
+<p>
+  Book your dream vacation today and start making memories that will last a
+  lifetime!
+</p>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Submit</button>
+</form>
+
+
+{%endblock%}

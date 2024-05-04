@@ -1,0 +1,11 @@
+<html>
+<head><title>Activities</title></head>
+<body>
+  <h1>List of Activities</h1>
+  <ul>
+    {% for user in users %}
+      <li>{{ user.name }} - {{ user.departure_date}} - {{ user.arrival_date}}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
