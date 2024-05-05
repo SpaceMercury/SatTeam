@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import ActivityForm
 from .models import Traveler
 from django.http import HttpResponse
-import
-
+from .friend_find_activity import UserComparer1
+import pandas as pd
 # Create your views here.
 
 def home(request):
@@ -32,12 +32,17 @@ def activity(request):
             ]
 
             # Path to your database file or similar resource
-            database_path = 'path/to/your/database/file'
+            
+            file_path = "/Users/polfuentes/SatTeam/mysite/data/hackupc-travelperk-dataset.csv"
+
+            df = pd.read_csv(file_path, header= 0)
+
+            df_simple = [row[1:] for row in df.values]
 
             # Call your comparison function
-            comparison_result = UserComparer1(user_profile, database_path)
+            comparison_result = UserComparer1(user_profile, df_simple)
 
-            return render(request, 'results_template.html', {'result': comparison_result})
+            return render(request, 'companion.html', {'result': comparison_result})
         
         else:
             return HttpResponse('Invalid data')

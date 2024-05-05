@@ -2,8 +2,9 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
+
 # Specify the file path
-file_path = "SatTeam/data/hackupc-travelperk-dataset.csv"  # This path does not have the activities, Change it if we got time
+file_path = "data/hackupc-travelperk-dataset.csv" # This path does not have the activities, Chnge it if we got time
 
 # Read the CSV file into a DataFrame
 df = pd.read_csv(file_path, header= 0)   # Esto es mi excel I guess
@@ -27,7 +28,6 @@ Acity = 'Lisbon'
 OverlapIntended = 3      # The customer may decide how minimum days he wants to coincide with someone
 
 
-
 UserProfileTest = [name, Ddate, Rdate, Dcity, Acity]   # The imput profile caracteristics to be compared
 
 #print(UserProfileTest)         #test stuff
@@ -36,7 +36,8 @@ UserProfileTest = [name, Ddate, Rdate, Dcity, Acity]   # The imput profile carac
 # --------------------------------------------------------------------------------------------------------------------
 # Prototype 1 : Arrival and Departure dates are the same and no activities are registered. Coincidences are low but program runs
 
-def UserComparer1(UserProfile, DataBase):  # This function is meant to compare Users caracteristics
+def UserComparer1(UserProfile, DataBase):
+# /Users/polfuentes/SatTeam/mysite cwd
     CompatibleUsers = []
     for user in DataBase:
         if np.array_equal(UserProfile[1:], user[1:]):  # Compare elements 1 to 4 (excluding element 0)
@@ -142,7 +143,7 @@ def UserComparer3(UserProfile, DataBase , OverlapIntended):
 # Activities added
 # ------------------------------------------------------------------------------------------------------------------------
 
-file_path2 = "SatTeam\data\hackupc-travelperk-dataset-extended.csv"  # This path does have the activities
+file_path2 = "data/hackupc-travelperk-dataset-extended.csv"  # This path does have the activities
 
 # Read the CSV file into a DataFrame
 df2 = pd.read_csv(file_path2, header= 0)   # Esto es mi excel I guess
