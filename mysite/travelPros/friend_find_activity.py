@@ -46,7 +46,7 @@ def UserComparer1(UserProfile, DataBase):
     if len(CompatibleUsers) != 0:
         return CompatibleUsers
     else:
-        return 'No compatible results'
+        return ''
 
 
 
@@ -133,7 +133,7 @@ def UserComparer3(UserProfile, DataBase , OverlapIntended):
     if len(CompatibleUsers) != 0:
         return CompatibleUsers
     else:
-        return 'No compatible results'
+        return ''
 
 
 # TestList2 = UserComparer3(UserProfileTest, df_simple, OverlapIntended)      #test stuff

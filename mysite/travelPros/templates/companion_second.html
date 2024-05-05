@@ -31,22 +31,17 @@
     <h1>Hello {{ user_name }}</h1>
     {% if results %}
         <p>Here are users that are compatible with your trip:</p>
-
         <ul class="results-list">
-        <h3> Users that are flying on the same dates as you: </h3>
-        {% for result in results %}
-                {% if result == '' %}
-                <h3> Users are flying on different but overlapping dates </h3>
-                {% else %}
+            {% for result in results %}
                 <li>
-                  <!-- Assuming 'detail_view' is the name of your URL pattern -->
-                    {{ result }}<span class="click-info">Click for more information</span>
+                      <!-- Assuming 'detail_view' is the name of your URL pattern -->
+                        {{ result.0 }}<span class="click-info">Click for more information</span>
+                    
                 </li>
-                {% endif %}
             {% endfor %}
         </ul>
     {% else %}
-        <p class="No compatible results">No results found.</p>
+        <p class="no-results">No results found.</p>
     {% endif %}
 </div>
 {% endblock %}
