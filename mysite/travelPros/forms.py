@@ -5,4 +5,4 @@ from .models import Traveler
 class ActivityForm(ModelForm):
     class Meta:
         model = Traveler
-        fields = ['name', 'departure_date', 'arrival_date', 'departure_city', 'arrival_city', 'number_of_days']
+        fields = ['name', 'departure_date', 'return_date', 'departure_city', 'arrival_city', 'number_of_days']

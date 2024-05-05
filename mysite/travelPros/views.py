@@ -19,15 +19,19 @@ def activity(request):
 
     if request.method == 'POST':
         form = ActivityForm(request.POST)
+
+        print(form)
         if form.is_valid():
 
             Traveler.objects.all().delete()
+
+            print("received")
             form.save()
 
             user_profile = [
                 form.cleaned_data['name'],
                 form.cleaned_data['departure_date'],
-                form.cleaned_data['arrival_date'],
+                form.cleaned_data['return_date'],
                 form.cleaned_data['departure_city'],
                 form.cleaned_data['arrival_city'],
                 form.cleaned_data['number_of_days']
@@ -67,7 +71,7 @@ def activityfirst(request):
             user_profile = [
                 form.cleaned_data['name'],
                 form.cleaned_data['departure_date'],
-                form.cleaned_data['arrival_date'],
+                form.cleaned_data['return_date'],
                 form.cleaned_data['departure_city'],
                 form.cleaned_data['arrival_city'],
                 form.cleaned_data['number_of_days']
