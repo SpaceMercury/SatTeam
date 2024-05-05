@@ -1,13 +1,47 @@
-{%extends 'base.html'%} 
+{% extends 'base.html' %}
 
-{%block title%}Companion{%endblock%} 
-{%block content%}
+{% block content %}
+<style>
+    .results-list li {
+        background-color: #f0f0f0;  /* Light grey background */
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    }
 
-<ul>
-  <h1>Comparison Result</h1>
-<p>{{ result }}</p>
-</ul>
+    .results-list li:hover {
+        background-color: #e0e0e0; /* Darker shade on hover */
+    }
 
+    .click-info {
+        font-size: 0.9em; /* Smaller text for 'click for more information' */
+        color: #555;
+        margin-left: 10px;
+    }
 
+    a {
+        text-decoration: none; /* Removes underline from links */
+        color: inherit; /* Inherits text color from parent elements */
+    }
+</style>
 
-{%endblock%}
+<div class="results-container">
+    <h1>Hello {{ user_name }}</h1>
+    {% if results %}
+        <p>Here are users that are compatible with your trip:</p>
+        <ul class="results-list">
+            {% for result in results %}
+                <li>
+                    <a href="{% url 'detailed_view' result.0 %}">  <!-- Assuming 'detail_view' is the name of your URL pattern -->
+                        {{ result.0 }}<span class="click-info">Click for more information</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-results">No results found.</p>
+    {% endif %}
+</div>
+{% endblock %}

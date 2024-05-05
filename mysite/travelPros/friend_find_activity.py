@@ -41,7 +41,7 @@ def UserComparer1(UserProfile, DataBase):
     CompatibleUsers = []
     for user in DataBase:
         if np.array_equal(UserProfile[1:], user[1:]):  # Compare elements 1 to 4 (excluding element 0)
-            CompatibleUsers.append(user[0])  # Append the identifier (element 0) of the compatible user
+            CompatibleUsers.append(user)  # Append the identifier (element 0) of the compatible user
     
     if len(CompatibleUsers) != 0:
         return CompatibleUsers

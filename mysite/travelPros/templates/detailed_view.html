@@ -1,0 +1,57 @@
+{% load static %} <!-- Load static files if needed -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Travel Information</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Link to an external stylesheet if you have one -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .info-container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .info-header {
+            background-color: #18bfe9f7;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            text-align: center;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .info-content {
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .info-content p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-container">
+        <div class="info-header">
+            <h1>User Travel Information</h1>
+        </div>
+        <div class="info-content">
+            <p><strong>Name:</strong> {{ user }}</p>
+            <p><strong>Departure City:</strong> {{ user.1 }}</p>
+            <p><strong>Destination City:</strong> {{ user.2 }}</p>
+            <p><strong>Departure Date:</strong> {{ user.3 }}</p>
+            <p><strong>Return Date:</strong> {{ user.4 }}</p>
+        </div>
+    </div>
+</body>
+</html>

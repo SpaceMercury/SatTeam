@@ -34,15 +34,16 @@ def activity(request):
             # Path to your database file or similar resource
             
             file_path = "/Users/polfuentes/SatTeam/mysite/data/hackupc-travelperk-dataset.csv"
-
             df = pd.read_csv(file_path, header= 0)
-
             df_simple = [row[1:] for row in df.values]
 
             # Call your comparison function
             comparison_result = UserComparer1(user_profile, df_simple)
 
-            return render(request, 'companion.html', {'result': comparison_result})
+            return render(request, 'companion.html', {
+                'results': comparison_result,
+                'user_name': user_profile[0]  # Passing the user's name
+            })
         
         else:
             return HttpResponse('Invalid data')
@@ -52,3 +53,8 @@ def activity(request):
 def companionview(request):
     users = Traveler.objects.all()  # Query all activities
     return render(request, 'companion.html', {'users': users})
+
+
+def detailed_view(request, username):
+    print(username)
+    return render(request, 'detailed_view.html', {'user': username})
