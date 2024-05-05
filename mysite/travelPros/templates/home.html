@@ -1,4 +1,30 @@
 {%extends 'base.html'%} {%block title%}Home{%endblock%} {%block content%}
+
+<style>
+  .results-list li {
+      background-color: #f0f0f0;  /* Light grey background */
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+
+  .results-list li:hover {
+      background-color: #e0e0e0; /* Darker shade on hover */
+  }
+
+  .click-info {
+      font-size: 0.9em; /* Smaller text for 'click for more information' */
+      color: #555;
+      margin-left: 10px;
+  }
+
+  a {
+      text-decoration: none; /* Removes underline from links */
+      color: inherit; /* Inherits text color from parent elements */
+  }
+</style>
 <h1>Welcome to Travel Pros</h1>
 <p>
   Travel Pros is a travel agency that specializes in booking trips to exotic
