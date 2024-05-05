@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-w782)w#u(kdc(ef(!6r)-b+%c#w0hbkejiq2q_0^cfuj6g$f-a
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['*','smokecana.biz', 'www.smokecana.biz', '127.0.0.1', 'localhost', '10.4.247.46']
+ALLOWED_HOSTS = [,'smokecana.biz', 'www.smokecana.biz', '127.0.0.1', 'localhost']
 
 
 
